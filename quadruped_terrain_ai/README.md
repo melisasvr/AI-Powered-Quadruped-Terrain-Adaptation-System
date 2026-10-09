@@ -1,16 +1,15 @@
 # AI-Powered Quadruped Terrain Adaptation System
 
-A simulation and control system for a four-legged robot that learns to adapt its gait to difficult terrain: stairs, slopes, rubble and slippery ground. A small neural network, trained with evolution strategies, modulates a trot gait generator to keep the robot balanced and moving forward.
+A simulation and control system for a four-legged robot that learns to adapt its gait to difficult terrain: stairs, slopes, rubble, and slippery ground. A small neural network, trained with evolution strategies, modulates a trot gait generator to keep the robot balanced and moving forward.
 
-![Dashboard screenshot](docs/dashboard.png)
 
 ## Features
 
 - **Quadruped locomotion simulation** with a 12-joint robot defined in code (no external assets to download)
-- **Procedural terrain generation** with randomized parameters: flat, slope, stairs, rubble and slippery surfaces
+- **Procedural terrain generation** with randomized parameters: flat, slope, stairs, rubble, and slippery surfaces
 - **AI-based gait adaptation and balance control** using a JAX neural network trained with evolution strategies
 - **Disturbance testing** with a lateral push to measure recovery
-- **Real-time visualization** of body posture, foot contacts and stability in an interactive Streamlit dashboard with a PyVista 3D view
+- **Real-time visualization** of body posture, foot contacts, and stability in an interactive Streamlit dashboard with a PyVista 3D view
 - **Performance benchmark** reporting success rate, distance, energy use and recovery rate per terrain
 
 ## Tech Stack
@@ -24,7 +23,7 @@ A simulation and control system for a four-legged robot that learns to adapt its
 | 3D visualization | PyVista |
 | Numerics and plots | NumPy, SciPy, Pandas, Matplotlib |
 
-No PyTorch and no C++ build step are required.
+- Neither PyTorch nor a C++ build step is required.
 
 ## Project Structure
 
