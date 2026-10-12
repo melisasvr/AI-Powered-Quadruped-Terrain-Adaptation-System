@@ -1,4 +1,7 @@
 """MuJoCo quadruped + terrain + Gymnasium env, all in one file (no external assets)."""
+import os
+os.environ.setdefault("MUJOCO_GL", "disable")   # physics only; PyVista does the rendering
+
 import numpy as np, mujoco, gymnasium as gym
 from gymnasium import spaces
 from scipy.ndimage import gaussian_filter

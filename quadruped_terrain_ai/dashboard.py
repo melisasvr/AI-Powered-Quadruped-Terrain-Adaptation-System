@@ -1,12 +1,13 @@
 """streamlit run dashboard.py"""
-import os
-import sys
+import os, sys
 
-# Use EGL and software fallback for headless Linux cloud environments (Streamlit Cloud)
-if sys.platform.startswith("linux"):
-    os.environ["MUJOCO_GL"] = "egl"
-    os.environ["PYOPENGL_PLATFORM"] = "egl"
+if sys.platform.startswith("linux"):          # headless server (Streamlit Cloud)
     os.environ["PYVISTA_OFF_SCREEN"] = "true"
+    try:
+        import pyvista as pv
+        pv.start_xvfb()                       # virtual display for 3D rendering
+    except Exception:
+        pass
 
 import numpy as np, pandas as pd, streamlit as st, matplotlib.pyplot as plt
 from quadruped import QuadrupedEnv, KINDS, XS, YS
