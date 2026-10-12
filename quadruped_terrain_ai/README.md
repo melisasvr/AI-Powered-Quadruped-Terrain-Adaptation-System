@@ -87,7 +87,8 @@ Run without a policy file to benchmark the untrained trot baseline.
 streamlit run dashboard.py
 ```
 
-Pick a terrain, press **Run episode**, and use the frame slider to step through the run. The **Benchmark** tab compares all terrains. On a headless Linux server, use `xvfb-run -a streamlit run dashboard.py` so PyVista can render.
+- Pick a terrain, press **Run episode**, and use the frame slider to step through the run. The **Benchmark** tab compares all terrains. On a headless Linux server, use `xvfb-run -a streamlit run dashboard.py` so PyVista can render.
+- **Note on Streamlit Cloud & Headless Deployments:** `dashboard.py` includes built-in platform checks (`sys.platform`) that automatically apply software rendering environment variables (`MUJOCO_GL=osmesa`, `PYVISTA_OFF_SCREEN=true`) when running on Linux cloud servers to prevent segmentation faults.
 
 ## How It Works
 
@@ -140,6 +141,7 @@ Benchmark after 150 training iterations (5 episodes per terrain, with push):
 - **Reward and termination:** edit `QuadrupedEnv.step()` in `quadruped.py`.
 - **Windows:** training uses multiprocessing with the spawn method. Keep the `if __name__ == "__main__":` guard in `train.py`.
 - **3D view shows a side view with a "PyVista unavailable" title:** the error type is shown in that title. Make sure `pyvista` is installed and that your graphics drivers support off-screen rendering.
+- **Headless server / Streamlit Cloud crashes (exit code 234):** `dashboard.py` handles this automatically via `sys.platform checks`, setting `MUJOCO_GL=osmesa` and `PYVISTA_OFF_SCREEN=true` on Linux environments.
 
 ## Roadmap
 
@@ -158,7 +160,7 @@ Contributions are welcome.
 3. Check that `python train.py --iters 2 --pop 2` and `streamlit run dashboard.py` still run.
 4. Commit with a clear message and open a pull request describing what changed and why.
 
-Please open an issue first for larger changes, and include steps to reproduce when reporting a bug.
+- Please open an issue first for larger changes, and include steps to reproduce when reporting a bug.
 
 ## License
 - This project is licensed under the MIT License. 
