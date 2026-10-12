@@ -2,9 +2,10 @@
 import os
 import sys
 
-# Only apply headless settings if running on Linux (Streamlit Cloud)
+# Use EGL and software fallback for headless Linux cloud environments (Streamlit Cloud)
 if sys.platform.startswith("linux"):
-    os.environ["MUJOCO_GL"] = "osmesa"
+    os.environ["MUJOCO_GL"] = "egl"
+    os.environ["PYOPENGL_PLATFORM"] = "egl"
     os.environ["PYVISTA_OFF_SCREEN"] = "true"
 
 import numpy as np, pandas as pd, streamlit as st, matplotlib.pyplot as plt
